@@ -36,7 +36,7 @@ public class ServicioPersona {
 
     public ArrayList<Persona> listadoClientes() {
         ArrayList<Persona> clientes = new ArrayList<>();
-      
+
         boolean salir = false;
         do {
             Persona persona = cargaCliente();
@@ -47,13 +47,25 @@ public class ServicioPersona {
                 salir = true;
             }
         } while (salir != true);
-        
+
         return clientes;
     }
 
     public void mostrarClientes(ArrayList<Persona> persona) {
         for (Persona cliente : persona) {
             System.out.println(cliente);
+        }
+    }
+
+    public void mostrarClientesDisponibles(ArrayList<Persona> persona) {
+         int c = 0;
+        for (Persona cliente : persona) {
+            if (cliente.getAdoptante() == false) {
+                System.out.println(cliente);
+            }
+            if (c == 0) {
+            System.out.println(" No hay Clientes disponibles para adopción");
+            }
         }
     }
 

@@ -17,8 +17,10 @@ public class MainPersonaPerro {
 
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
-        ServicioPerro s = new ServicioPerro();
+        ServicioPerro p = new ServicioPerro();
         ServicioPersona sp = new ServicioPersona();
+        ArrayList <Persona> clientes = null;
+        ArrayList <Perro> mascota = null;
  
         boolean salir = false;
         boolean bandera = false;
@@ -31,7 +33,7 @@ public class MainPersonaPerro {
         System.out.println("1. Ingresar Clientes");
         System.out.println("2. Ingresar Mascotas");
         System.out.println("3. Asignar Mascota");
-        System.out.println("4. Mostrar Mascotas y Personas Disponibles");
+        System.out.println("4. Listados");
         System.out.println("5. salir");
         System.out.println("");
 
@@ -39,20 +41,51 @@ public class MainPersonaPerro {
 
         switch (ops) {
             case 1:  // "1. Ingresar Clientes"
-                sp.obtenerClientes();
+                clientes = sp.listadoClientes();
                 break;
             case 2:  // "2. Ingresar Mascotas"
-                s.obtenerMascotas();
+                mascota = p.listadoMascotas();
                 break;
             case 3:  // "3. Asignar Mascota"
-                s.asignarMascota();
+                p.asignarMascota(mascota,clientes);
                 break;
             case 4:   // "4. Mostrar Mascotas y Personas Disponibles"
-                System.out.println(" El Listado de Mascotas Disponibles son: ");
-                s.mostrarMascota();
-                System.out.println("");
-                System.out.println(" El Listado de Clientes Disponibles son: ");
-                sp.mostrarClientes();
+                    boolean op = false;
+                    do{
+                        System.out.println(" ----- Menu Listados ----- ");
+                        System.out.println("");
+                        System.out.println(" Seleccione la Acción a realizar");
+                        System.out.println("1. Listado Total de Clientes");
+                        System.out.println("2. Listado Total de Mascotas");
+                        System.out.println("3. Listado de Clientes Disponibles");
+                        System.out.println("4. Listado de Mascotas Dispoibles");
+                        System.out.println("5. salir");
+                        System.out.println("");
+                        int list = leer.nextInt();
+                        switch (list) {
+                            case 1:
+                                System.out.println(" El Listado de Clientes Disponibles son: ");
+                                sp.mostrarClientes(clientes);
+                                break;
+                            case 2:
+                                System.out.println(" El Listado de Mascotas es: ");
+                                p.mostrarMascota(mascota);
+                                break;
+                            case 3:
+                                System.out.println(" El Listado de Clientes Disponibles son: ");
+                                sp.mostrarClientesDisponibles(clientes);
+                                break;
+                            case 4:
+                                System.out.println(" El Listado de Mascotas Disponibles son: ");
+                                p.mostrarMascotaDisponibles(mascota);
+                                break;
+                            case 5:
+                                op = true;
+                                break;
+                            default:
+                               System.out.println("La Opcion seleccionada no es correcta, ingrese nuevamente");
+                        }
+                    }while(op != true);
                 break;
             case 5:  // "5. Salir"
                 bandera = true;
@@ -62,6 +95,7 @@ public class MainPersonaPerro {
         }
         
      }while(bandera != true);
+             
     }
 
-}
+} // Fin Clase Main

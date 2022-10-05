@@ -14,16 +14,16 @@ public class ServicioPerro {
 
     Scanner leer = new Scanner(System.in).useDelimiter("\n");
 
-    ServicioPersona sper = new ServicioPersona();
+    ServicioPersona sp = new ServicioPersona();
     Persona p = new Persona();
- 
 
-
+    ArrayList<Perro> mascotas = new ArrayList<>();
+    ArrayList<Persona> clientes = null;
 
     // Carga de Objeto Mascota 
     private Perro cargaMascota() {
         Perro mascota = new Perro();
-        
+
         System.out.println("");
         System.out.println(" ---- Datos Mascota ---- ");
         System.out.println("");
@@ -43,8 +43,8 @@ public class ServicioPerro {
     }  // Funcion para devolver la carga de una mascota
 
     public ArrayList<Perro> listadoMascotas() {
-        ArrayList<Perro> mascotas = new ArrayList<>();
-       
+//        ArrayList<Perro> mascotas = new ArrayList<>();
+
         boolean salir = false;
         do {
             Perro mascota = cargaMascota();
@@ -55,7 +55,7 @@ public class ServicioPerro {
                 salir = true;
             }
         } while (salir != true);
-       
+
         return mascotas;
     } // Funcion para devolver listado de mascotas
 
@@ -65,30 +65,45 @@ public class ServicioPerro {
         }
     } // Funcion para mostrar listado de mascotas
 
-    public void asignarMascota() {
+    public void mostrarMascotaDisponibles(ArrayList<Perro> listadoMascotas) {
+        int c =0;
+        for (Perro perro : listadoMascotas) {
+            if (perro.getEstadoAdopcion() == false) {
+                System.out.println(perro);
+                c++;
+            } 
+            if (c == 0) {
+            System.out.println(" No hay Mascotas disponibles para adopción");
+            }
+        }
+    } // Funcion para mostrar listado de mascotas
+
+    public void asignarMascota(ArrayList<Perro> mascota, ArrayList<Persona> clientes) {
         // Asigno Mascota
-        ArrayList<Persona> clientes = sper.obtenerClientes();
         System.out.println("¿Que Mascota desea Asignar?");
         String nombre = leer.next();
         System.out.println("");
-        for (int i = 0; i < masc.getPerro().size(); i++) {
+        for (int i = 0; i < mascota.size(); i++) {
             // Busco mascota dentro del Listado
-            if (masc.getPerro().get(i).getNombre().equalsIgnoreCase(nombre)) {
-                System.out.println(p.getClientes().toString());
-                System.out.println("");
+            if (mascota.get(i).getNombre().equalsIgnoreCase(nombre) && mascota.get(i).getEstadoAdopcion() == false) {
                 // Asigno Cliente 
-                System.out.println(" ¿Ingrese el Nombre de la Persona Adoptante? ");
-                String nombrePer = leer.next();
+                System.out.println(mascota.get(i).getNombre().toUpperCase() + ", se encuentra para Adopcion");
                 System.out.println("");
-                // Busco CLiente y asigno cliente a Pesona de Mascota
-                if (p.getClientes().get(i).getNombre().equalsIgnoreCase(nombrePer)) {
-                     masc.getPerro().get(i).setP(p.getClientes().get(i));
-                     p.getClientes().get(i).setAdoptante(true); // Declaro al cliente como no disponible
-                    break;
+                System.out.println(" ¿Indique el Nombre de la Persona que la Adoptara? ");
+                String nombrePer = leer.next();
+                for (int j = 0; j < clientes.size(); j++) {
+                    // Busco Cliente y asigno cliente al Objeto Persona de la Mascota
+                    if (clientes.get(j).getNombre().equalsIgnoreCase(nombrePer) && clientes.get(j).getAdoptante() == false) {
+                        clientes.get(j).setAdoptante(true); // Declaro al cliente como Adoptante
+                        mascota.get(j).setEstadoAdopcion(true); // Declaro a la Mascota adoptada
+                        System.out.println(" Asigno correctamente a " + mascota.get(j).getNombre() + " a su nueva/o Adoptante " + clientes.get(j).getNombre());
+                        break;
+                    }
                 }
-            } // fin IF comparar nombres de Mascota
-        }
 
+            }// fin IF comparar nombres de Mascota
+
+        }
     }
 
 }  // Fin Clase Servicio
