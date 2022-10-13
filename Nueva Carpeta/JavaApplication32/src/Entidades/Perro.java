@@ -5,17 +5,16 @@ atributos: nombre, apellido, edad, documento y Perro.
  */
 package Entidades;
 
-
-
 public class Perro {
-    
+
     private String nombre;
     private String raza;
     private int edad;
     private String tamano;
-    private Persona p;
-    private boolean estadoAdopcion;
+    private String estado;
+    
 
+    private boolean estadoAdopcion;
 
     public Perro() {
     }
@@ -28,15 +27,13 @@ public class Perro {
         this.estadoAdopcion = estadoAdopcion;
     }
 
-    public Perro(String nombre, String raza, int edad, String tamano, Persona p) {
+    public Perro(String nombre, String raza, int edad, String tamano) {
         this.nombre = nombre;
         this.raza = raza;
         this.edad = edad;
         this.tamano = tamano;
-        this.p = p;
     }
 
-    
     public String getNombre() {
         return nombre;
     }
@@ -69,15 +66,8 @@ public class Perro {
         this.tamano = tamano;
     }
 
-    public Persona getP() {
-        return p;
-    }
-
-    public void setP(Persona p) {
-        this.p = p;
-    }
-
     public boolean getEstadoAdopcion() {
+
         return estadoAdopcion;
     }
 
@@ -85,13 +75,9 @@ public class Perro {
         this.estadoAdopcion = estadoAdopcion;
     }
 
-    
     @Override
     public String toString() {
         return " \n [ " + "Nombre:" + nombre + ", Raza: " + raza + ", Edad: " + edad + " años, de Tamaño: " + tamano + " Estado Adopcion: " + estadoAdopcion + " ]";
     }
 
-    
-
-    
 }

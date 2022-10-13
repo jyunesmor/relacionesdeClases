@@ -5,29 +5,28 @@ atributos: nombre, apellido, edad, documento y Perro.
  */
 package Entidades;
 
-
-
 public class Persona {
-    
+
     private String nombre;
     private String apellido;
     private int edad;
     private String documento;
+    private String estado;
+    private Perro mascota;
     private boolean Adoptante;
-
 
     public Persona() {
     }
 
-    public Persona(String nombre, String apellido, int edad, String documento, boolean Adoptante) {
+    public Persona(String nombre, String apellido, int edad, String documento, boolean Adoptante, Perro mascota) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.documento = documento;
+        this.mascota = mascota;
         this.Adoptante = Adoptante;
     }
 
- 
     public String getNombre() {
         return nombre;
     }
@@ -49,7 +48,10 @@ public class Persona {
     }
 
     public void setEdad(int edad) {
-        this.edad = edad;
+        if (edad > 0 && edad < 100) {
+            this.edad = edad;
+        }
+
     }
 
     public String getDocumento() {
@@ -57,7 +59,7 @@ public class Persona {
     }
 
     public void setDocumento(String documento) {
-        this.documento = documento;
+          this.documento = documento;
     }
 
     public boolean getAdoptante() {
@@ -68,14 +70,18 @@ public class Persona {
         this.Adoptante = Adoptante;
     }
 
-    @Override
-    public String toString() {
-        return " \n [" + " Nombre: " + nombre + ", Apellido: " + apellido + ", edad: " + edad + " años, DNI: " + documento + " Estado: " + Adoptante + "]";
+    public Perro getMascota() {
+
+        return mascota;
     }
 
-    
- 
-    
-    
-    
+    public void setMascota(Perro mascota) {
+        this.mascota = mascota;
+    }
+
+    @Override
+    public String toString() {
+        return " \n [" + " Nombre: " + nombre + ", Apellido: " + apellido + ", edad: " + edad + " años, DNI: " + documento + " Estado: " + Adoptante + "] \n La Mascota adoptada es: " + mascota;
+    }
+
 }

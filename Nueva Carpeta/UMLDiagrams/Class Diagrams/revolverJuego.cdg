@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="revolverJuego">
+  <ClassDiagramComponents>
+    <Class name="Revolver" package="" visibility="private" xPosition="68.0" yPosition="17.0">
+      <Fields>
+        <Field name="pos_actual" type="int" visibility="private"/>
+        <Field name="pos_agua" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Juego" package="" visibility="private" xPosition="315.0" yPosition="358.0">
+      <Fields>
+        <Field name="jugadores" type="ArrayList" visibility="private"/>
+        <Field name="revolver" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="llenarJuego" returnType="void" visibility="public"/>
+        <Method name="ronda" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Jugador" package="" visibility="private" xPosition="541.0" yPosition="30.0">
+      <Fields>
+        <Field name="id" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="mojado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="servicioRevolver" package="" visibility="private" xPosition="68.0" yPosition="157.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="llenarRevolver" returnType="void" visibility="public"/>
+        <Method name="mojar" returnType="boolean" visibility="public"/>
+        <Method name="siguienteChorro" returnType="void" visibility="public"/>
+        <Method name="toString" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="servicioJugador" package="" visibility="public" xPosition="541.0" yPosition="185.0">
+      <Fields>
+        <Field name="r" type="Revolver" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="disparo" returnType="void" visibility="public"/>
+        <Method name="cantidadJugadores" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

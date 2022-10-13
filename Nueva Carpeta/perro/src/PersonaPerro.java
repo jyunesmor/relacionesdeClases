@@ -1,4 +1,7 @@
 
+import java.util.ArrayList;
+
+
 public class PersonaPerro {
 
     public static void main(String[] args) {
@@ -8,12 +11,13 @@ public class PersonaPerro {
         
         
         
-        
+         ArrayList <Perro> dog = s.agregarPerro();
+         ArrayList <Persona> human = sp.agregarPersona();
       
-        s.mostrarPerro(s.agregarPerro());
-        sp.mostrarPerro(sp.agregarPersona());
+        s.mostrarPerro(dog);
+        sp.mostrarPersona(human);
         
-        sp.adoptarPerro(s.agregarPerro(),sp.agregarPersona());
+        sp.adoptarPerro(dog,human);
         
         
     }

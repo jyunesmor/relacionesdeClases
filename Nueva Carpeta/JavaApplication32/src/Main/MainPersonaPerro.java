@@ -47,11 +47,12 @@ public class MainPersonaPerro {
                 mascota = p.listadoMascotas();
                 break;
             case 3:  // "3. Asignar Mascota"
-                p.asignarMascota(mascota,clientes);
+                sp.asignarMascota(mascota, clientes);
                 break;
             case 4:   // "4. Mostrar Mascotas y Personas Disponibles"
                     boolean op = false;
                     do{
+                        System.out.println("");
                         System.out.println(" ----- Menu Listados ----- ");
                         System.out.println("");
                         System.out.println(" Seleccione la Acción a realizar");
@@ -60,23 +61,26 @@ public class MainPersonaPerro {
                         System.out.println("3. Listado de Clientes Disponibles");
                         System.out.println("4. Listado de Mascotas Dispoibles");
                         System.out.println("5. salir");
-                        System.out.println("");
                         int list = leer.nextInt();
                         switch (list) {
                             case 1:
                                 System.out.println(" El Listado de Clientes Disponibles son: ");
+                                System.out.println("");
                                 sp.mostrarClientes(clientes);
                                 break;
                             case 2:
                                 System.out.println(" El Listado de Mascotas es: ");
+                                System.out.println("");
                                 p.mostrarMascota(mascota);
                                 break;
                             case 3:
                                 System.out.println(" El Listado de Clientes Disponibles son: ");
+                                System.out.println("");
                                 sp.mostrarClientesDisponibles(clientes);
                                 break;
                             case 4:
                                 System.out.println(" El Listado de Mascotas Disponibles son: ");
+                                System.out.println("");
                                 p.mostrarMascotaDisponibles(mascota);
                                 break;
                             case 5:

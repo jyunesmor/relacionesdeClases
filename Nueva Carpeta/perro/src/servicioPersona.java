@@ -22,7 +22,7 @@ public class servicioPersona {
         return usuarios;
     }
 
-    public void mostrarPerro(ArrayList <Persona> p) {
+    public void mostrarPersona(ArrayList <Persona> p) {
         for (Persona aux : p) {
             System.out.println(aux);
         }

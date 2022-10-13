@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejerc_Relaciones_02_Revolver">
+  <ClassDiagramComponents>
+    <Class name="Juego" package="Entidad" visibility="public" xPosition="20.0" yPosition="-50.0">
+      <Fields>
+        <Field name="jugadores" type="ArrayList&lt;Jugador&gt;" visibility="private"/>
+        <Field name="revolver" type="Revolver" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="ArrayList" name="jugadores"/>
+          <Argument type="Revolver" name="revolver"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getJugadores" returnType="ArrayList" visibility="public"/>
+        <Method name="setJugadores" returnType="void" visibility="public">
+          <Argument type="ArrayList" name="jugadores"/>
+        </Method>
+        <Method name="getRevolver" returnType="Revolver" visibility="public"/>
+        <Method name="setRevolver" returnType="void" visibility="public">
+          <Argument type="Revolver" name="revolver"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Jugador" package="Entidad" visibility="public" xPosition="0.0" yPosition="250.0">
+      <Fields>
+        <Field name="id" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="mojado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="id"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="boolean" name="mojado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getId" returnType="int" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getMojado" returnType="boolean" visibility="public"/>
+        <Method name="setMojado" returnType="void" visibility="public">
+          <Argument type="boolean" name="mojado"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Revolver" package="Entidad" visibility="public" xPosition="366.0" yPosition="-132.0">
+      <Fields>
+        <Field name="pos_actual" type="int" visibility="private"/>
+        <Field name="pos_agua" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="pos_actual"/>
+          <Argument type="int" name="pos_agua"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPos_actual" returnType="int" visibility="public"/>
+        <Method name="setPos_actual" returnType="void" visibility="public">
+          <Argument type="int" name="pos_actual"/>
+        </Method>
+        <Method name="getPos_agua" returnType="int" visibility="public"/>
+        <Method name="setPos_agua" returnType="void" visibility="public">
+          <Argument type="int" name="pos_agua"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MainRevolver" package="Main" visibility="public" xPosition="917.0" yPosition="405.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="servicioJuego" package="Servicio" visibility="public" xPosition="428.0" yPosition="165.0">
+      <Fields>
+        <Field name="j" type="Juego" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="llenarJuego" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Jugador&gt;" name="jugadores"/>
+          <Argument type="Revolver" name="r"/>
+        </Method>
+        <Method name="ronda" returnType="boolean" visibility="public">
+          <Argument type="servicioRevolver" name="sr"/>
+          <Argument type="servicioJugador" name="sj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="servicioJugador" package="Servicio" visibility="public" xPosition="551.0" yPosition="362.0">
+      <Fields>
+        <Field name="leer" type="Scanner" visibility="package"/>
+        <Field name="j" type="Jugador" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="ingresoJugadores" returnType="ArrayList&lt;Jugador&gt;" visibility="public"/>
+        <Method name="disparo" returnType="boolean" visibility="public">
+          <Argument type="servicioRevolver" name="sr"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="servicioRevolver" package="Servicio" visibility="public" xPosition="819.0" yPosition="47.0">
+      <Fields>
+        <Field name="r" type="Revolver" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="llenarRevolver" returnType="void" visibility="public"/>
+        <Method name="mojar" returnType="boolean" visibility="public"/>
+        <Method name="siguienteChorro" returnType="void" visibility="public"/>
+        <Method name="mostrar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="j" source="Servicio.servicioJuego" target="Entidad.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Entidad.Juego" target="Entidad.Revolver" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jugadores" source="Entidad.Juego" target="Entidad.Jugador" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Jugador&gt;"/>
+    <HasRelation name="r" source="Servicio.servicioRevolver" target="Entidad.Revolver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Servicio.servicioJuego" target="Entidad.Revolver" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Servicio.servicioJuego" target="Servicio.servicioRevolver" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Servicio.servicioJugador" target="Servicio.servicioRevolver" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="revolver" source="Entidad.Juego" target="Entidad.Revolver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="j" source="Servicio.servicioJugador" target="Entidad.Jugador" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Servicio.servicioJugador" target="Entidad.Jugador" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
